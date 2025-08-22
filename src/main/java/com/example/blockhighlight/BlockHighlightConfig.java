@@ -21,11 +21,18 @@ public class BlockHighlightConfig {
         public float hiddenOpacity = 0.1f;
         public boolean showBreakingProgress = true;
         public boolean enableInCreative = false;
+        public boolean showAllPlayerBreaking = true;
+        public float breakingHighlightRange = 100.0f; // Range to show other players' breaking blocks
         
         // RGB values for highlight color (0.0-1.0)
         public float highlightRed = 1.0f;
         public float highlightGreen = 1.0f;
         public float highlightBlue = 1.0f;
+        
+        // RGB values for other players' breaking blocks
+        public float otherPlayerRed = 1.0f;
+        public float otherPlayerGreen = 0.5f;
+        public float otherPlayerBlue = 0.0f;
     }
     
     public static void load() {
@@ -105,10 +112,33 @@ public class BlockHighlightConfig {
         return new float[]{config.highlightRed, config.highlightGreen, config.highlightBlue};
     }
     
-    public static void setHighlightColor(float red, float green, float blue) {
-        config.highlightRed = Math.max(0.0f, Math.min(1.0f, red));
-        config.highlightGreen = Math.max(0.0f, Math.min(1.0f, green));
-        config.highlightBlue = Math.max(0.0f, Math.min(1.0f, blue));
+    
+    public static boolean showAllPlayerBreaking() {
+        return config.showAllPlayerBreaking;
+    }
+    
+    public static void setShowAllPlayerBreaking(boolean show) {
+        config.showAllPlayerBreaking = show;
+        save();
+    }
+    
+    public static float getBreakingHighlightRange() {
+        return config.breakingHighlightRange;
+    }
+    
+    public static void setBreakingHighlightRange(float range) {
+        config.breakingHighlightRange = Math.max(10.0f, Math.min(200.0f, range));
+        save();
+    }
+    
+    public static float[] getOtherPlayerColor() {
+        return new float[]{config.otherPlayerRed, config.otherPlayerGreen, config.otherPlayerBlue};
+    }
+    
+    public static void setOtherPlayerColor(float red, float green, float blue) {
+        config.otherPlayerRed = Math.max(0.0f, Math.min(1.0f, red));
+        config.otherPlayerGreen = Math.max(0.0f, Math.min(1.0f, green));
+        config.otherPlayerBlue = Math.max(0.0f, Math.min(1.0f, blue));
         save();
     }
 }
