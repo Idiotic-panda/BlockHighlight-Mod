@@ -1,3 +1,4 @@
+// src/main/java/com/example/blockhighlight/BlockHighlightMod.java
 package com.example.blockhighlight;
 
 import net.fabricmc.api.ModInitializer;
@@ -47,3 +48,4 @@ public class BlockHighlightMod implements ModInitializer {
         return toggleKeybind;
     }
 }
+
