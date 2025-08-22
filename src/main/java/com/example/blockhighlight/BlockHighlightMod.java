@@ -48,4 +48,3 @@ public class BlockHighlightMod implements ModInitializer {
         return toggleKeybind;
     }
 }
-
